@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カレンダーアプリ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="calendar">
+    <header>
+      <button id="prev-month">◀</button>
+      <div id="month-year"></div>
+      <button id="next-month">▶</button>
+    </header>
+    <div id="weekdays"></div>
+    <div id="dates"></div>
+  </div>
+
+  <div id="event-form">
+    <label for="year-month-input">年月を選択: </label>
+    <input type="month" id="year-month-input">
+    <button id="go-to-month">表示</button>
+    <br><br>
+    <label>日付: <span id="selected-date">未選択</span></label>
+    <br>
+    <textarea id="event-input" placeholder="予定を入力してください"></textarea>
+    <input type="time" id="event-time">
+    <button id="save-event">保存</button>
+    <button id="delete-event">削除</button>
+    <button id="go-today">今日に戻る</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

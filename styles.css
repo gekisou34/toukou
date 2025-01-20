@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#calendar {
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+}
+
+#weekdays, #dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+#weekdays div {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+#dates div {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  min-height: 60px;
+  position: relative;
+  cursor: pointer;
+}
+
+#dates div.today {
+  background-color: rgb(0, 200, 255);
+}
+
+#dates div.saturday {
+  color: blue;
+}
+
+#dates div.sunday, #dates div.holiday {
+  color: red;
+}
+
+#dates div .events {
+  font-size: 12px;
+  color: #555;
+  margin-top: 5px;
+  text-align: left;
+}
+
+#event-form {
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+#event-form textarea, #event-form input[type="time"] {
+  width: calc(50% - 10px);
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+#event-form button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#save-event {
+  background: #4CAF50;
+  color: white;
+}
+
+#delete-event {
+  background: #f44336;
+  color: white;
+}
+#dates div.holiday {
+  background-color: #fffacd; /* 薄い黄色 */
+}
+.holiday-label {
+  font-size: 10px;
+  color: red;
+  margin-top: 5px;
+}
