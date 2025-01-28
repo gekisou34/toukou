@@ -3,8 +3,8 @@ const today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 const holidays = {
-  "2025-01-01":"元旦",
-  "2025-01-08":"成人の日",
+  "2025-01-01": "元旦",
+  "2025-01-08": "成人の日",
   "2025-02-11": "建国記念の日",
   "2025-03-20": "春分の日",
   "2025-04-29": "昭和の日",
@@ -22,7 +22,19 @@ const holidays = {
 };
 let selectedDate = null;
 
-const events = {};
+// ローカルストレージからイベントを取得
+const loadEvents = () => {
+  const storedEvents = localStorage.getItem("events");
+  return storedEvents ? JSON.parse(storedEvents) : {};
+};
+
+// ローカルストレージにイベントを保存
+const saveEventsToStorage = () => {
+  localStorage.setItem("events", JSON.stringify(events));
+};
+
+// イベントオブジェクトを初期化
+let events = loadEvents();
 
 const renderCalendar = (year, month) => {
   const datesDiv = document.getElementById("dates");
@@ -75,12 +87,14 @@ const saveEvent = () => {
   const eventTime = document.getElementById("event-time").value;
   if (!eventText || !eventTime) return alert("予定と時間を入力してください");
   events[selectedDate] = `${eventTime} ${eventText}`;
+  saveEventsToStorage(); // ローカルストレージに保存
   renderCalendar(currentYear, currentMonth);
 };
 
 const deleteEvent = () => {
   if (!selectedDate) return alert("日付を選択してください");
   delete events[selectedDate];
+  saveEventsToStorage(); // ローカルストレージを更新
   renderCalendar(currentYear, currentMonth);
 };
 
@@ -124,3 +138,4 @@ document.getElementById("go-today").addEventListener("click", goToToday);
 document.getElementById("go-to-month").addEventListener("click", goToSelectedMonth);
 
 goToToday();
+
